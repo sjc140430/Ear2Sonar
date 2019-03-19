@@ -45,7 +45,6 @@ public final class RulesList {
     return ImmutableList.<Class<? extends JavaCheck>>builder()
       .add(SpringControllerRequestMappingEntityRule.class)
       .add(AvoidAnnotationRule.class)
-      .add(AvoidBrandInMethodNamesRule.class)
       .add(AvoidMethodDeclarationRule.class)
       .add(AvoidSuperClassRule.class)
       .add(AvoidUnmodifiableListRule.class)

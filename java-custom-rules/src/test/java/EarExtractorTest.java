@@ -21,23 +21,20 @@ public class EarExtractorTest {
 	
 	public String findFolder(File source, String targetDir) {
 		String found = null;
-		String temp = null;
 		try {
 			File[] files = source.listFiles();
 			for (File file : files) {
-				if (file.isDirectory()) {
-					//System.out.println(file.getName());
-					if(file.getName().equals(targetDir)) { //folder name matches target
-						//System.out.println("found target: " + file.getName());
-						 found = file.getCanonicalPath();					 
-						//System.out.println("found at base case: " + found);
-					}
-					else {
-						temp = findFolder(file, targetDir);
-						if(temp != null) {
-							found = temp;
-						}
-					}
+				if(file.getName().equals(targetDir)) {
+					found = file.getCanonicalPath();
+					System.out.println("found at base case: " + found);
+				}
+			}
+			for (File file : files) {
+				if (file.isDirectory()) {				
+						//System.out.println("Else: " + file.getName());
+						//calls++;
+						found = (found != null) ? found : findFolder(file, targetDir);
+						//System.out.println(found);
 				}
 			}
 
